@@ -55,7 +55,7 @@ public class HumanFactory {
      * Нашел в гугле генератор, у которого есть апи.
      */
     public String getHumanNameFromApi() throws IOException {
-        String name = null;
+        String name;
         String randusUrl = "https://randus.org/api.php";
         OkHttpClient client = new OkHttpClient();
 
@@ -69,7 +69,7 @@ public class HumanFactory {
         response.close();
 
         JSONObject json = new JSONObject(result);
-        name = (String) json.get("fname") + " " + (String) json.get("lname");
+        name = json.get("fname") + " " + json.get("lname");
 
         return name;
     }
